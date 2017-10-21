@@ -147,9 +147,8 @@ class Weather extends Component{
 			);
 		});
 		return (
-			<View style={className("g-bg-light-blue")}>
+			<View style={{width: "100%", height: "100%"}}>
 				<Swiper 
-					style={styles.wrapper} 
 					showsButtons={false}
 					paginationStyle={{bottom:10, paddingTop:10, borderTopColor:"rgba(255,255,255,0.7)",borderTopWidth:1}}
 					dot={<View style={{backgroundColor: 'rgba(255,255,255,0.2)', width: 6, height: 6, borderRadius: 3, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}
