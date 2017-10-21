@@ -50,6 +50,9 @@ const globalStyle = {
 	'g-col-2': {
 		flex: 2
 	},
+	'g-w-full': {
+		width: "100%"
+	},
 	'g-full': {
 		flexBasis: "100%"
 	},
@@ -74,16 +77,58 @@ const globalStyle = {
 	'g-pd-v-10': {
 		paddingVertical: 10
 	},
+	'g-pd-h-15': {
+		paddingHorizontal: 15
+	},
+	'g-pd-v-15': {
+		paddingVertical: 15
+	},
 	'g-pd-h-20': {
 		paddingHorizontal: 20
 	},
 	'g-pd-v-20': {
 		paddingVertical: 20
 	},
+	'g-pd-h-25': {
+		paddingHorizontal: 25
+	},
+	'g-pd-v-25': {
+		paddingVertical: 25
+	},
 	'g-pd-h-30': {
 		paddingHorizontal: 30
 	},
 	'g-pd-v-30': {
+		paddingVertical: 30
+	},
+	'g-m-h-10': {
+		paddingHorizontal: 10
+	},
+	'g-m-v-10': {
+		paddingVertical: 10
+	},
+	'g-m-h-15': {
+		paddingHorizontal: 15
+	},
+	'g-m-v-15': {
+		paddingVertical: 15
+	},
+	'g-m-h-20': {
+		paddingHorizontal: 20
+	},
+	'g-m-v-20': {
+		paddingVertical: 20
+	},
+	'g-m-h-25': {
+		paddingHorizontal: 25
+	},
+	'g-m-v-25': {
+		paddingVertical: 25
+	},
+	'g-m-h-30': {
+		paddingHorizontal: 30
+	},
+	'g-m-v-30': {
 		paddingVertical: 30
 	},
     'g-red': {
@@ -95,6 +140,21 @@ const globalStyle = {
 	'g-bg-light': {
 		backgroundColor: "#f3f3f3"
 	},
+	'g-bg-light-blue': {
+		backgroundColor: "#6cb4ff"
+	},
+	'g-bg-trans': {
+		backgroundColor: "transparent"
+	},
+	'g-fs-14': {
+		fontSize: 14
+	},
+	'g-fs-15': {
+		fontSize: 15
+	},
+	'g-fs-16': {
+		fontSize: 16
+	},
 	'g-fs-20': {
 		fontSize: 20
 	},
@@ -104,15 +164,27 @@ const globalStyle = {
 	'g-fs-70': {
 		fontSize: 70
 	},
+	'g-f-c-white': {
+		color: "#fff"
+	},
 	'g-f-c-dark': {
 		color: "#555"
 	},
 	'g-bd-c': {
-		borderRadius: "50%"
+		borderRadius: 35
 	},
 	'g-bb-light': {
 		borderBottomWidth: 1,
 		borderBottomColor:"#ddd",
-	}
+	},
+	'g-ta-l': {
+		textAlign: "left"
+	},
+	'g-ta-c': {
+		textAlign: "center"
+	},
+	'g-ta-r': {
+		textAlign: "right"
+	},
 };
 export default globalStyle;
