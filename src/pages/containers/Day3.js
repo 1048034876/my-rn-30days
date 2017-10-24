@@ -14,12 +14,11 @@ import {
     Dimensions,
     RefreshControl,
     ScrollView,
-    StatusBar,
-    TabBarIOS,
     TouchableHighlight,
     TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { className } from '../../css/common.js';
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
@@ -53,7 +52,7 @@ class Entrance extends Component {
     render() {
         return (
             <Animated.View style={className("g-ps-a g-w-full g-h-full g-ai-c g-jc-c g-bg-middle-blue")}>
-                <AnimatedIcon size={60} style={{...className("g-f-c-white g-ta-c g-ps-r"), top: -20}}/>
+                {<AnimatedIcon name="logo-twitter" size={60} style={{...className("g-f-c-white g-ta-c g-ps-r"), top: -20}}/>}
             </Animated.View>
         )
     }
@@ -86,8 +85,8 @@ class TwitterPost extends Component {
                         tintColor="#ddd"
                     />
                 }
-            >
-                <Image source={require('../../img/day3.png')} style={{width: dimensionWidth, height: dimensionHeight - 110}}/>
+            >   
+                <Image source={require("../../img/day3.png")} style={{width: dimensionWidth, height: dimensionHeight - 110}}/>
             </ScrollView>
         )
     }
@@ -102,7 +101,7 @@ class TwitterFlow extends Component {
                         <Icon name="ios-person-add" size={23} style={className("g-f-c-middleBlue g-pd-l-10")}/>
                     </View>
                     <View style={className("g-col g-ai-c g-jc-c")}>
-                    <Icon name="logo-twitter" size={27} style={className("g-f-c-middleBblue")}/>
+                        <Icon name="logo-twitter" size={27} style={className("g-f-c-middleBlue")}/>
                     </View>
                     <View style={className("g-col g-ai-c g-jc-fe g-fd-r")}>
                         <Icon name="ios-search" size={23} style={{...className("g-f-c-middleBlue"), width: 30}}/>
@@ -115,17 +114,17 @@ class TwitterFlow extends Component {
     }
 }
 
-class FacebookTabBar extends Component({
-    tabIcons: [],
-    propTypes: {
+class FacebookTabBar extends Component{
+    tabIcons = [];
+    static propTypes = {
         goToPage: React.PropTypes.func,
         activeTab: React.PropTypes.number,
         tabs: React.PropTypes.array,
-    },
+    };
     componenetDidMount() {
         setTimeout(() => this.props.goToPage(0), 0);
         this._listener = this.props.scrollValue.addListener(this.setAnimationValue);
-    },
+    }
     setAnimationValue({value, }) {
         this.tabIcons.forEach((icon, i) => {
             const progress = (value - i >= 0 && value - i <=1) ? value - i : 1;
@@ -135,20 +134,21 @@ class FacebookTabBar extends Component({
                 },
             });
         });
-    },
+    }
     iconColor(progress) {
         const red = 49 + (159 - 49) * progress;
         const green = 149 + (159 - 149) * progress;
         const blue = 215 + (159 - 215) * progress;
         return `rgb(${red}, ${green}, ${blue})`;
-    },
+    }
     render() {
         return (
-            <View style={{...className("g-col g-ai-c g-jc-c g-pd-b-10"), ...this.props.style}}>
+            <View style={{...className("g-col g-pd-b-10"), position: "absolute", bottom: 0, height: 55}}>
                 {
                     this.props.tabs.map((tab, i) => {
+                        console.log(tab)
                         return (
-                            <TouchableOpacity key={tab} onPress={() => setTimeout(() => this.props.goToPage(i), 0)} style={className("g-col g-ai-c g-jc-c g-pd-b-10")}>
+                            <TouchableOpacity key={i} onPress={() => setTimeout(() => this.props.goToPage(i), 0)} style={className("g-col g-ai-c g-jc-c g-pd-b-10")}>
                                 <Icon
                                     name={tab}
                                     size={30}
@@ -161,8 +161,8 @@ class FacebookTabBar extends Component({
                 }
             </View>
         )
-    },
-});
+    }
+};
 
 class TwitterTab extends Component {
     constructor(props, context) {
@@ -200,7 +200,7 @@ class TwitterTab extends Component {
     }
     render() {
         const tabView = (
-            <View>
+            <View style={{flex: 1}}>
                 <View style={{...className("g-fd-r g-pd-t-15 g-pd-l-20 g-pd-r-10 g-w-full g-jc-sb"), backgroundColor: "#3195d7", height: 55}}>
                     <View style={className("g-fd-r")}>
                         <Icon name="logo-twitter" color="#fff" size={27} />

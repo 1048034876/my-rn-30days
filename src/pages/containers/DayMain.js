@@ -24,16 +24,16 @@ class Container extends Component {
                             <Text style={{...className("g-fs-26")}}>Day2</Text>
                         </View>
                     </TouchableHighlight>
-                    <TouchableHighlight style={{...className("g-1of3 g-bg-white"), height: 170}} onPress={() => navigation.navigate("Day1")}>
+                    <TouchableHighlight style={{...className("g-1of3 g-bg-white"), height: 170}} onPress={() => navigation.navigate("Day3")}>
                         <View style={{...className("g-jc-c g-ai-c")}}>
-                            <Ionicons name="ios-timer" size={50} color="green" />
-                            <Text style={{...className("g-fs-26")}}>Day1</Text>
+                            <Ionicons name="logo-twitter" size={60} color="#0090ff" />
+                            <Text style={{...className("g-fs-26")}}>Day3</Text>
                         </View>
                     </TouchableHighlight>
                     <TouchableHighlight style={{...className("g-1of3 g-bg-white"), height: 170}} onPress={() => navigation.navigate("Day1")}>
                         <View style={{...className("g-jc-c g-ai-c")}}>
-                            <Ionicons name="ios-timer" size={50} color="green" />
-                            <Text style={{...className("g-fs-26")}}>Day1</Text>
+                            <Ionicons name="ios-analytics" size={60} color="#fc9000" />
+                            <Text style={{...className("g-fs-26")}}>Day4</Text>
                         </View>
                     </TouchableHighlight>
                 </View>
