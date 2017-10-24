@@ -8,36 +8,36 @@ class Container extends Component {
         super(props, context);
     }
     render() {
-        const{ navigation } = this.props;
+        const { navigation } = this.props;
         return (
             <View>
                 <View style={className("g-fd-r g-fw-w")}>
-                    <TouchableHighlight style={{...className("g-1of3 g-bg-white"), height: 170}} onPress={() => navigation.navigate("Day1")}>
-                        <View style={{...className("g-jc-c g-ai-c")}}>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white"), height: 170 }} onPress={() => navigation.navigate("Day1")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
                             <Ionicons name="ios-timer" size={60} color="#fc9055" />
-                            <Text style={{...className("g-fs-26")}}>Day1</Text>
+                            <Text style={{ ...className("g-fs-26") }}>Day1</Text>
                         </View>
                     </TouchableHighlight>
-                    <TouchableHighlight style={{...className("g-1of3 g-bg-white"), height: 170}} onPress={() => navigation.navigate("Day2")}>
-                        <View style={{...className("g-jc-c g-ai-c")}}>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white"), height: 170 }} onPress={() => navigation.navigate("Day2")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
                             <Ionicons name="ios-cloud" size={60} color="#90b4aa" />
-                            <Text style={{...className("g-fs-26")}}>Day2</Text>
+                            <Text style={{ ...className("g-fs-26") }}>Day2</Text>
                         </View>
                     </TouchableHighlight>
-                    <TouchableHighlight style={{...className("g-1of3 g-bg-white"), height: 170}} onPress={() => navigation.navigate("Day3")}>
-                        <View style={{...className("g-jc-c g-ai-c")}}>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white"), height: 170 }} onPress={() => navigation.navigate("Day3")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
                             <Ionicons name="logo-twitter" size={60} color="#0090ff" />
-                            <Text style={{...className("g-fs-26")}}>Day3</Text>
+                            <Text style={{ ...className("g-fs-26") }}>Day3</Text>
                         </View>
                     </TouchableHighlight>
-                    <TouchableHighlight style={{...className("g-1of3 g-bg-white"), height: 170}} onPress={() => navigation.navigate("Day1")}>
-                        <View style={{...className("g-jc-c g-ai-c")}}>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white"), height: 170 }} onPress={() => navigation.navigate("Day1")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
                             <Ionicons name="ios-analytics" size={60} color="#fc9000" />
-                            <Text style={{...className("g-fs-26")}}>Day4</Text>
+                            <Text style={{ ...className("g-fs-26") }}>Day4</Text>
                         </View>
                     </TouchableHighlight>
                 </View>
-                
+
             </View>
         )
     }
