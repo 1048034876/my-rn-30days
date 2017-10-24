@@ -313,6 +313,9 @@ const globalStyle = {
 	'g-fs-16': {
 		fontSize: 16
 	},
+	'g-fs-18': {
+		fontSize: 18
+	},
 	'g-fs-20': {
 		fontSize: 20
 	},
