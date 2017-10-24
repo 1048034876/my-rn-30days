@@ -1,6 +1,9 @@
 /**
- * 
+ * Day 5
+ * find my location
  */
+'use strict';
+
 import React, { Component } from 'react';
 import {
     View,
@@ -11,10 +14,12 @@ import {
     TouchableHighlight
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
+import { className } from '../../css/common.js';
 
 const dimensionWidth = Dimensions.get("window").width;
 const dimensionHeight = Dimensions.get("window").height;
-export class Map extends Component {
+
+class Map extends Component {
     static defaultProps = {
         mapType: 'standard',
         showsUserLocation: false,
@@ -75,13 +80,13 @@ export default class extends Component {
     render() {
         return (
             <View style={{...className("g-ai-c"), paddingTop: 60}}>
-                <Map mapType="standard" mapStyle={{...classNames("g-w-full"), height: dimensionHeight - 120}} />
+                <Map mapType="standard" mapStyle={{...className("g-w-full"), height: dimensionHeight - 120}} ></Map>
                 <TouchableHighlight 
                     underlayColor="#00bd03" 
                     style={{...className("g-jc-c g-m-t-10"), width: dimensionWidth - 80, height: 40, borderWidth: 1, borderColor: "#009302", borderRadius: 4, backgroundColor: "#00a803"}}
                     onPress={() => this._getLocation()}
                 >
-                    <Text style={classNames("g-ta-c g-f-c-white g-fs-18")}>Find my location</Text>
+                    <Text style={className("g-ta-c g-f-c-white g-fs-18")}>Find my location</Text>
                 </TouchableHighlight>
             </View>
         )

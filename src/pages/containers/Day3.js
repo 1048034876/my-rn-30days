@@ -52,7 +52,7 @@ class Entrance extends Component {
     render() {
         return (
             <Animated.View style={className("g-ps-a g-w-full g-h-full g-ai-c g-jc-c g-bg-middle-blue")}>
-                {<AnimatedIcon name="logo-twitter" size={60} style={{ ...className("g-f-c-white g-ta-c g-ps-r"), top: -20 }} />}
+                <AnimatedIcon name="logo-twitter" size={60} style={{ ...className("g-f-c-white g-ta-c g-ps-r"), top: -20 }} />
             </Animated.View>
         )
     }
