@@ -42,6 +42,12 @@ class Container extends Component {
                             <Text style={{ ...className("g-fs-26") }}>Day5</Text>
                         </View>
                     </TouchableHighlight>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day6")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
+                            <Ionicons name="ios-navigate" size={60} color="#00d800" />
+                            <Text style={{ ...className("g-fs-26") }}>Day6</Text>
+                        </View>
+                    </TouchableHighlight>
                 </View>
 
             </View>
