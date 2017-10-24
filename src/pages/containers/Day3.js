@@ -52,7 +52,7 @@ class Entrance extends Component {
     render() {
         return (
             <Animated.View style={className("g-ps-a g-w-full g-h-full g-ai-c g-jc-c g-bg-middle-blue")}>
-                {<AnimatedIcon name="logo-twitter" size={60} style={{...className("g-f-c-white g-ta-c g-ps-r"), top: -20}}/>}
+                {<AnimatedIcon name="logo-twitter" size={60} style={{ ...className("g-f-c-white g-ta-c g-ps-r"), top: -20 }} />}
             </Animated.View>
         )
     }
@@ -85,8 +85,8 @@ class TwitterPost extends Component {
                         tintColor="#ddd"
                     />
                 }
-            >   
-                <Image source={require("../../img/day3.png")} style={{width: dimensionWidth, height: dimensionHeight - 110}}/>
+            >
+                <Image source={require("../../img/day3.png")} style={{ width: dimensionWidth, height: dimensionHeight - 110 }} />
             </ScrollView>
         )
     }
@@ -96,16 +96,16 @@ class TwitterFlow extends Component {
     render() {
         return (
             <View>
-                <View style={{...className("g-fd-r g-pd-t-30 g-bb-light g-pd-b-5 g-bg-white"), borderBottomWidth: 1}}>
+                <View style={{ ...className("g-fd-r g-pd-t-30 g-bb-light g-pd-b-5 g-bg-white"), borderBottomWidth: 1 }}>
                     <View style={className("g-col g-ai-c g-jc-c")}>
-                        <Icon name="ios-person-add" size={23} style={className("g-f-c-middleBlue g-pd-l-10")}/>
+                        <Icon name="ios-person-add" size={23} style={className("g-f-c-middleBlue g-pd-l-10")} />
                     </View>
                     <View style={className("g-col g-ai-c g-jc-c")}>
-                        <Icon name="logo-twitter" size={27} style={className("g-f-c-middleBlue")}/>
+                        <Icon name="logo-twitter" size={27} style={className("g-f-c-middleBlue")} />
                     </View>
                     <View style={className("g-col g-ai-c g-jc-fe g-fd-r")}>
-                        <Icon name="ios-search" size={23} style={{...className("g-f-c-middleBlue"), width: 30}}/>
-                        <Icon name="ios-create-outline" size={23} style={{...className("g-f-c-middleBlue g-pd-r-10"), width: 30}}/>
+                        <Icon name="ios-search" size={23} style={{ ...className("g-f-c-middleBlue"), width: 30 }} />
+                        <Icon name="ios-create-outline" size={23} style={{ ...className("g-f-c-middleBlue g-pd-r-10"), width: 30 }} />
                     </View>
                 </View>
                 <TwitterPost />
@@ -114,7 +114,7 @@ class TwitterFlow extends Component {
     }
 }
 
-class FacebookTabBar extends Component{
+class FacebookTabBar extends Component {
     tabIcons = [];
     static propTypes = {
         goToPage: React.PropTypes.func,
@@ -125,9 +125,9 @@ class FacebookTabBar extends Component{
         setTimeout(() => this.props.goToPage(0), 0);
         this._listener = this.props.scrollValue.addListener(this.setAnimationValue);
     }
-    setAnimationValue({value, }) {
+    setAnimationValue({ value, }) {
         this.tabIcons.forEach((icon, i) => {
-            const progress = (value - i >= 0 && value - i <=1) ? value - i : 1;
+            const progress = (value - i >= 0 && value - i <= 1) ? value - i : 1;
             icon.setNativeProps({
                 style: {
                     color: this.iconColor(progress),
@@ -143,7 +143,7 @@ class FacebookTabBar extends Component{
     }
     render() {
         return (
-            <View style={{...className("g-col g-pd-b-10"), position: "absolute", bottom: 0, height: 55}}>
+            <View style={{ ...className("g-col g-pd-b-10"), position: "absolute", bottom: 0, height: 55 }}>
                 {
                     this.props.tabs.map((tab, i) => {
                         console.log(tab)
@@ -180,7 +180,7 @@ class TwitterTab extends Component {
     _updateTitle(obj) {
         const { i } = obj;
         let title = "";
-        switch(i) {
+        switch (i) {
             case 0:
                 title = "主页";
                 break;
@@ -200,13 +200,13 @@ class TwitterTab extends Component {
     }
     render() {
         const tabView = (
-            <View style={{flex: 1}}>
-                <View style={{...className("g-fd-r g-pd-t-15 g-pd-l-20 g-pd-r-10 g-w-full g-jc-sb"), backgroundColor: "#3195d7", height: 55}}>
+            <View style={{ flex: 1 }}>
+                <View style={{ ...className("g-fd-r g-pd-t-15 g-pd-l-20 g-pd-r-10 g-w-full g-jc-sb"), backgroundColor: "#3195d7", height: 55 }}>
                     <View style={className("g-fd-r")}>
                         <Icon name="logo-twitter" color="#fff" size={27} />
                         <Text style={className("g-f-c-white g-pd-l-10 g-fs-20")}>{this.state.title}</Text>
                     </View>
-                    <View style={{...className("g-fd-r g-jc-sb"), width: 60}}>
+                    <View style={{ ...className("g-fd-r g-jc-sb"), width: 60 }}>
                         <Icon name="ios-search" color="#fff" size={25} />
                         <Icon name="ios-create-outline" color="#fff" size={25} />
                     </View>

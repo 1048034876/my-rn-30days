@@ -9,8 +9,8 @@ const globalStyle = {
 	},
 	'g-fd-c': {
 		flexDirection: 'column'
-    },
-    'g-fd-r': {
+	},
+	'g-fd-r': {
 		flexDirection: 'row'
 	},
 	'g-fd-cr': {
@@ -286,8 +286,8 @@ const globalStyle = {
 	'g-m-r-30': {
 		marginRight: 30
 	},
-    'g-red': {
-        color: "#f00"
+	'g-red': {
+		color: "#f00"
 	},
 	'g-bg-white': {
 		backgroundColor: "#fff"
@@ -339,7 +339,7 @@ const globalStyle = {
 	},
 	'g-bb-light': {
 		borderBottomWidth: 1,
-		borderBottomColor:"#ddd",
+		borderBottomColor: "#ddd",
 	},
 	'g-ta-l': {
 		textAlign: "left"
