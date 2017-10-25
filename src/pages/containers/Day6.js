@@ -16,6 +16,7 @@ import Video from 'react-native-video';
 import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { className } from '../../css/common.js';
+
 const dimensionWidth = Dimensions.get('window').width;
 const dimensionHeight = Dimensions.get('window').height;
 
