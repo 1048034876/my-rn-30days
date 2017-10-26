@@ -7,7 +7,7 @@ import {
     TouchableHighlight,
     PanResponder    // 多点触控手势
 } from 'react-native';
-import Icon from 'react-native-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { className } from '../../css/common.js';
 
 const dimensionWidth = Dimensions.get('window').width;
@@ -25,7 +25,7 @@ class MoveableCircle extends Component {
     _maxTop = dimensionHeight - 110;
     _maxLeft = dimensionWidth - 98;
     _circleStyles = {};
-    circle = (null : ? { setNativeProps(props: Object ) : void} );
+    circle = {};
 
     _updatePosition() {
         this.circle && this.circle.setNativeProps(this._circleStyles);
@@ -40,7 +40,7 @@ class MoveableCircle extends Component {
     componentWillMount() {
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (evt, gestureState) => true,
-            onStartShouldSetPanResponderCapture: (evt, gestureState) => ture,
+            onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
             onMoveShouldSetPanResponder: (evt, gestureState) => true,
             onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
             onPanResponderGrant: (evt, gestureState) => {
@@ -59,11 +59,11 @@ class MoveableCircle extends Component {
                 if (this._circleStyles.style.top < 5) {
                     this._circleStyles.style.top = 5;
                 }
-                if (this._circleStyle.style.left > this._maxLeft) {
-                    this._circleStyle.style.left = this._maxLeft;
+                if (this._circleStyles.style.left > this._maxLeft) {
+                    this._circleStyles.style.left = this._maxLeft;
                 }
-                if (this._circleStyle.style.top > this._maxTop) {
-                    this._circleStyle.style.top = this._maxTop;
+                if (this._circleStyles.style.top > this._maxTop) {
+                    this._circleStyles.style.top = this._maxTop;
                 }
                 this._updatePosition();
             },
@@ -85,7 +85,24 @@ class MoveableCircle extends Component {
         return (
             <View 
                 ref={(circle) => {this.circle = circle;}}
-                style={}
+                style={{...className("g-bg-trans g-ps-a"), left: 0, right: 0}}
+                {...this._panResponder.panHandlers}
+            >
+               <Icon ref="baseball" name="ios-baseball" color={this.state.color} size={120} /> 
+            </View>
+        )
+    }
+}
+
+export default class extends Component {
+    render() {
+        return (
+            <View style={className("g-w-full g-h-full")}>
+                <Image source={require('../../img/day3.png')} style={{...className("g-w-full g-ps-a"), resizeMode: "stretch"}} />
+                <View style={className("g-w-full g-h-full")}>
+                    <MoveableCircle />
+                </View>
+            </View>
         )
     }
 }
