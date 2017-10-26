@@ -1,3 +1,7 @@
+/**
+ * day 7
+ * drag and drop
+ */
 import React, { Component } from 'react';
 import {
     View,
