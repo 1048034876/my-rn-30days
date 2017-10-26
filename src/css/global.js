@@ -1,5 +1,9 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
+
+const dimensionWidth = Dimensions.get('window').width;
+const dimensionHeight = Dimensions.get('window').height;
+
 const globalStyle = {
 	'g-flex': {
 		display: 'flex',
@@ -58,11 +62,14 @@ const globalStyle = {
 	'g-col-2': {
 		flex: 2
 	},
+	'g-col-3': {
+		flex: 3
+	},
 	'g-w-full': {
-		width: "100%"
+		width: dimensionWidth
 	},
 	'g-h-full': {
-		height: "100%"
+		height: dimensionHeight
 	},
 	'g-full': {
 		flexBasis: "100%"
