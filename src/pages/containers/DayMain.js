@@ -50,14 +50,32 @@ class Container extends Component {
                     </TouchableHighlight>
                     <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day7")}>
                         <View style={{ ...className("g-jc-c g-ai-c") }}>
-                            <Ionicons name="ios-baseball" size={60} color="#6c2400" />
+                            <Ionicons name="ios-baseball" size={60} color="#5e2a06" />
                             <Text style={{ ...className("g-fs-26") }}>Day7</Text>
                         </View>
                     </TouchableHighlight>
                     <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day8")}>
                         <View style={{ ...className("g-jc-c g-ai-c") }}>
-                            <Ionicons name="ios-baseball" size={60} color="#6c2400" />
+                            <FontAwesome name="google" size={60} color="#4285f4" />
                             <Text style={{ ...className("g-fs-26") }}>Day8</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day9")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
+                            <FontAwesome name="twitter-square" size={60} color="#2aa2ef" />
+                            <Text style={{ ...className("g-fs-26") }}>Day9</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day10")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
+                            <Ionicons name="logo-tumblr" size={60} color="#37465c" />
+                            <Text style={{ ...className("g-fs-26") }}>Day10</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day11")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
+                            <Ionicons name="md-contrast" size={60} color="#2f3600" />
+                            <Text style={{ ...className("g-fs-26") }}>Day11</Text>
                         </View>
                     </TouchableHighlight>
                 </View>

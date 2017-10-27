@@ -15,6 +15,7 @@ import {
     LayoutAnimation,
     ScrollView,
     TabBarIOS,
+    SegmentedControlIOS
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { className } from '../../css/common';
@@ -41,11 +42,11 @@ class TwitterUser extends Component {
     _opacity = 0;
     _minTop = -192;
     _userStyle = {};
-    // user = (
-    //     null: ? {
-    //         setNativeProps(props: Object): void
-    //     }
-    // );
+    user = (
+        null: ? {
+            setNativeProps(props: Object): void
+        }
+    );
     _updatePosition() {
         this.user && this.user.setNativeProps(this._userStyles);
     }
@@ -111,10 +112,10 @@ class TwitterUser extends Component {
         return (
             <View
                 ref={(user) => {this.user = user;}} 
-                style={styles.userContainer}
+                style={{...className("g-ps-a g-w-full g-bg-white"), top: 0, left: 0, height: dimensionHeight - 50}}
                 {...panProps}
             >
-                <View style={{...classNames("g-col"), height: 300}}>
+                <View style={{...className("g-col"), height: 300}}>
                     <Image style={{...className("g-w-full g-ps-a"), height: 125, top: this.state.bannerTop, left: 0}} source={require('../../img/day3.png')} />
                     <View style={{...className("g-ps-a"), left: 10, top: this.state.iconTop, borderWidth: 5, borderColor: "#fff", borderRadius: 5, transform:[{scale:this.state.scale}]}}>
                         <Image style={{height: 68, width: 68}} source={require('../../img/day3.png')} />
@@ -149,6 +150,7 @@ class TwitterUser extends Component {
                     }
                     <Text style={{...className("g-ps-a g-fs-20 g-bg-trans g-f-c-white"), left: dimensionWidth / 2 - 30, fontWeight: "500", top: this.state.bannerTop + 90, opacity: this.state.opacity}}>Github</Text>
                     <View style={{...className("g-ps-a g-pd-l-15"), top: 263, left: 0, width: dimensionWidth - 15, height: 40}}>
+                        <SegmentedControlIOS values={['推文', '媒体', '喜欢']}  selectedIndex={0} tintColor="#2aa2ef"/>
                     </View>
                 </View>
                 <ScrollView contentInset={{top: 0}} style={{...className("g-ps-a g-w-full"), top: 300, backgroundColor: "#f5f8fa", height: dimensionHeight - 350, left: 0, borderTopWidth: 1, borderTopColor: "#9eacb6"}}>
@@ -175,20 +177,58 @@ class TwitterTab extends Component {
     }
     render() {
         return (
-            <TabBarIOS
-                barTintColor="#fff"
-                tintColor="#1b95e0"
-            >
-                <Icon.TabBarItem
-                    title="主页"
-                    iconName="ios-home-outline"
-                    selectedIconName="ios-home"
-                    onPress={() => this.changeTab("主页")}
-                    selected={this.state.selectedTab === "主页"}
-                >
-                    <TwitterUser />
-                </Icon.TabBarItem>
-            </TabBarIOS>
+            // <TabBarIOS
+            //     barTintColor="#fff"
+            //     tintColor="#1b95e0"
+            // >
+            //     <Icon.TabBarItem
+            //         title="主页"
+            //         iconName="ios-home-outline"
+            //         selectedIconName="ios-home"
+            //         onPress={() => this.changeTab("主页")}
+            //         selected={this.state.selectedTab === "主页"}
+            //     >
+            //         <TwitterUser />
+            //     </Icon.TabBarItem>
+            //     <Icon.TabBarItem
+            //         title="通知"
+            //         iconName="ios-notification-outline"
+            //         selectedIconName="ios-notification"
+            //         onPress={() => this.changeTab("通知")}
+            //         selected={this.state.selectedTab === "通知"}
+            //     >
+            //         <TwitterUser />
+            //     </Icon.TabBarItem>
+            //     <Icon.TabBarItem
+            //         title="私信"
+            //         iconName="ios-mail-outline"
+            //         selectedIconName="ios-mail"
+            //         onPress={() => this.changeTab("私信")}
+            //         selected={this.state.selectedTab === "私信"}
+            //     >
+            //         <TwitterUser />
+            //     </Icon.TabBarItem>
+            //     <Icon.TabBarItem
+            //         title="我"
+            //         iconName="ios-person-outline"
+            //         selectedIconName="ios-person"
+            //         onPress={() => this.changeTab("我")}
+            //         selected={this.state.selectedTab === "我"}
+            //     >
+            //         <TwitterUser />
+            //     </Icon.TabBarItem>
+            // </TabBarIOS>
+            <TwitterUser />
+        )
+    }
+}
+
+export default class extends Component {
+    render() {
+        return (
+            <View style={{...className("g-w-full g-h-full"), backgroundColor: "#f5f8fa"}}>
+                <TwitterTab />
+            </View>
         )
     }
 }
