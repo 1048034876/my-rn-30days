@@ -1,8 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import globalStyle from './global';
 const styleCommon = {
     ...globalStyle
 }
+export const dimensionWidth = Dimensions.get('window').width;
+export const dimensionHeight = Dimensions.get('window').height;
 /**
  * 样式转换
  */
@@ -29,5 +31,7 @@ export const className = (str) => {
             };
         }
     }
-    return styleObj;
+    return {
+        ...styleObj,
+    }
 };

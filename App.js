@@ -10,6 +10,8 @@ import Day6Page from './src/pages/containers/Day6';
 import Day7Page from './src/pages/containers/Day7';
 import Day8Page from './src/pages/containers/Day8';
 import Day9Page from './src/pages/containers/Day9';
+import Day10Page from './src/pages/containers/Day10';
+// import Day11Page from './src/pages/containers/Day11';
 
 export default StackNavigator({
 	DayMain: {
@@ -38,5 +40,11 @@ export default StackNavigator({
 	},
 	Day9: {
 		screen: Day9Page,
-	}
+	},
+	Day10: {
+		screen: Day10Page,
+	},
+	// Day11: {
+	// 	screen: Day11Page,
+	// }
 })
