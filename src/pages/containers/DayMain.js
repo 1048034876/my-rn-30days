@@ -78,6 +78,18 @@ class Container extends Component {
                             <Text style={{ ...className("g-fs-26") }}>Day11</Text>
                         </View>
                     </TouchableHighlight>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day12")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
+                            <Ionicons name="ios-stats" size={60} color="#fd8f9d" />
+                            <Text style={{ ...className("g-fs-26") }}>Day12</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day13")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
+                            <Ionicons name="md-chatboxes" size={60} color="#83709d" />
+                            <Text style={{ ...className("g-fs-26") }}>Day13</Text>
+                        </View>
+                    </TouchableHighlight>
                 </View>
 
             </View>
