@@ -90,6 +90,12 @@ class Container extends Component {
                             <Text style={{ ...className("g-fs-26") }}>Day13</Text>
                         </View>
                     </TouchableHighlight>
+                    <TouchableHighlight style={{ ...className("g-1of3 g-bg-white g-ai-c g-jc-c"), height: 170, borderColor: "#ddd" }} onPress={() => navigation.navigate("Day14")}>
+                        <View style={{ ...className("g-jc-c g-ai-c") }}>
+                            <FontAwesome name="fire" size={60} color="#ff6b6b" />
+                            <Text style={{ ...className("g-fs-26") }}>Day14</Text>
+                        </View>
+                    </TouchableHighlight>
                 </View>
 
             </View>
