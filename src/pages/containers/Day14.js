@@ -52,6 +52,22 @@ class Card extends Component {
     }
 }
 
+class SCard extends Component {
+    static propTypes = {
+        id: React.PropTypes.string.isRequired,
+        top: React.PropTypes.number.isRequired,
+        width: React.PropTypes.number.isRequired,
+        img: React.PropTypes.string.isRequired,
+    };
+    render() {
+        return (
+            <View key={this.props.id} style={{...className("g-ps-r g-bg-white"), width: this.props.width, height: 410, borderRadius: 5, borderWidth: 1, borderColor: "#e1e1e1", top: this.props.top}}>
+                <Image style={{width: this.props.width - 2, height: 350}} source={{uri: this.props.img}} />
+                <
+            </View>
+        )
+    }
+}
 class SwipeCard extends Component {
     constructor(props, context) {
         super(props, context);
