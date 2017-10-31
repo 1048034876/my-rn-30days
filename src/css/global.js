@@ -326,6 +326,9 @@ const globalStyle = {
 	'g-fs-20': {
 		fontSize: 20
 	},
+	'g-fs-25': {
+		fontSize: 25
+	},
 	'g-fs-26': {
 		fontSize: 26
 	},
