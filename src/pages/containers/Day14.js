@@ -63,7 +63,21 @@ class SCard extends Component {
         return (
             <View key={this.props.id} style={{...className("g-ps-r g-bg-white"), width: this.props.width, height: 410, borderRadius: 5, borderWidth: 1, borderColor: "#e1e1e1", top: this.props.top}}>
                 <Image style={{width: this.props.width - 2, height: 350}} source={{uri: this.props.img}} />
-                <
+                <View style={{...className("g-fd-r g-jc-sb g-ai-c g-pd-l-20 g-pd-r-5"), height: 60}}>
+                    <View>
+                        <Text style={{...className("g-fs-20"), fontWeight: "500", color: "#423e39"}}>{this.props.name}, very old <Icon name="ios-checkmark-circle" size={18} color="#208bf6" /></Text>
+                    </View>
+                    <View style={className("g-fd-r")}>
+                        <View style={{...className("g-fd-r g-ai-c"), width: 50}}>
+                            <Icon name="ios-people" size={25} color="#fc6b6d" />
+                            <Text style={{...className("g-pd-l-5 g-fs-16"), fontWeight: "500", color: "#fc6b6d"}}>0</Text>
+                        </View>
+                        <View style={{...className("g-fd-r g-ai-c"), width: 50}}>
+                            <Icon name="ios-book" size={25} color="#cecece" />
+                            <Text style={{...className("g-pd-l-5 g-fs-16"), fontWeight: "500", color: "#cecece"}}>0</Text>
+                        </View>
+                    </View>
+                </View>
             </View>
         )
     }
@@ -71,7 +85,7 @@ class SCard extends Component {
 class SwipeCard extends Component {
     constructor(props, context) {
         super(props, context);
-        const simgs = ["minion1", "minion2", "minion3", "minion4", "minion5"];
+        const simgs = ["http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren_tupian-007.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren-009.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren_tupian-004.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren-001.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren-005.jpg"];
         const names = ["Stuart", "Bob", "Kevin", "Dave", "Jerry"];
         const cards = simgs.map(function(elem, index) {
             return {
@@ -109,7 +123,7 @@ class SwipeCard extends Component {
 class Cards extends Component {
     constructor(props, context) {
         super(props, context);
-        const imgs = ["minion1", "minion2", "minion3", "minion4"];
+        const imgs = ["http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren_tupian-007.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren-009.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren_tupian-004.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren-001.jpg", "http://img.ivsky.com/img/tupian/pre/201411/01/xiaohuangren-005.jpg"];
         const names = ["Stuart", "Bob", "Kevin", "Dave", "Jerry"];
         this.state = { imgs, names };
     }

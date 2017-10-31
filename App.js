@@ -52,7 +52,7 @@ export default StackNavigator({
 	Day13: {
 		screen: Day13Page,
 	},
-	// Day14: {
-	// 	screen: Day14Page,
-	// }
+	Day14: {
+		screen: Day14Page,
+	}
 })
