@@ -11,7 +11,7 @@ import {
 	ListView,
 	TouchableHighlight
 } from 'react-native';
-import { className } from '../../css/common.js';
+import { className, dimensionHeight, dimensionWidth } from '../../css/common.js';
 
 class WatchFace extends Component {
 	static propTypes = {
@@ -20,9 +20,9 @@ class WatchFace extends Component {
 	};
 	render() {
 		return (
-			<View style={{ ...className("g-bg-white g-bb-light"), width: "100%", height: 170, paddingHorizontal: 50, paddingVertical: 30, }}>
-				<Text style={{ ...className("g-fs-20 g-pd-h-30 g-f-c-dark") }}>{this.props.sectionTime}</Text>
-				<Text style={{ ...className("g-pd-h-20 g-f-c-dark"), fontSize: 70 }}>{this.props.totalTime}</Text>
+			<View style={{...className("g-bg-white g-bb-light g-w-full g-pd-v-30"), height: 170, paddingHorizontal: 50}}>
+				<Text style={{...className("g-fs-20 g-pd-h-30 g-f-c-dark")}}>{this.props.sectionTime}</Text>
+				<Text style={{...className("g-pd-h-20 g-f-c-dark"), fontSize: 70}}>{this.props.totalTime}</Text>
 			</View>
 		)
 	}
@@ -35,8 +35,8 @@ class WatchControl extends Component {
 		startWatch: React.PropTypes.func.isRequired,
 		addRecord: React.PropTypes.func.isRequired,
 	};
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		this.state = {
 			watchOn: false,
 			startBtnText: "启动",
@@ -47,6 +47,7 @@ class WatchControl extends Component {
 	}
 	_startWatch() {
 		if (!this.state.watchOn) {
+			this.props.startWatch();
 			this.setState({
 				startBtnText: "停止",
 				startBtnColor: "#ff0044",
@@ -54,8 +55,8 @@ class WatchControl extends Component {
 				underlayColor: "#eee",
 				watchOn: true
 			});
-			this.props.startWatch();
 		} else {
+			this.props.stopWatch();
 			this.setState({
 				startBtnText: "启动",
 				startBtnColor: "#60B644",
@@ -63,7 +64,6 @@ class WatchControl extends Component {
 				underlayColor: "#eee",
 				watchOn: false
 			});
-			this.props.stopWatch();
 		}
 	}
 	_addRecord() {
@@ -76,18 +76,17 @@ class WatchControl extends Component {
 			})
 		}
 	}
-
 	render() {
 		return (
-			<View style={{ ...className("g-fd-r g-bg-light g-pd-v-30"), width: "100%", height: 100, paddingHorizontal: 60 }}>
+			<View style={{...className("g-fd-r g-bg-light g-pd-v-30 g-w-full"), height: 100, paddingHorizontal: 60 }}>
 				<View style={className("g-col")}>
-					<TouchableHighlight style={{ ...className("g-bd-c g-bg-white g-jc-c g-ai-c"), width: 70, height: 70 }} underlayColor={this.state.underlayColor} onPress={() => this._addRecord()}>
-						<Text style={{ ...className("g-bg-trans g-fs-14"), color: "#555" }}>{this.state.stopBtnText}</Text>
+					<TouchableHighlight style={{...className("g-bd-c g-bg-white g-jc-c g-ai-c"), width: 70, height: 70 }} underlayColor={this.state.underlayColor} onPress={() => this._addRecord()}>
+						<Text style={{...className("g-bg-trans g-fs-14"), color: "#555" }}>{this.state.stopBtnText}</Text>
 					</TouchableHighlight>
 				</View>
 				<View style={className("g-col g-ai-fe")}>
-					<TouchableHighlight style={{ ...className("g-bd-c g-bg-white g-jc-c g-ai-c"), width: 70, height: 70 }} underlayColor="#eee" onPress={() => this._startWatch()}>
-						<Text style={{ ...className("g-fs-14 g-bg-trans"), color: this.state.startBtnColor }}>{this.state.startBtnText}</Text>
+					<TouchableHighlight style={{...className("g-bd-c g-bg-white g-jc-c g-ai-c"), width: 70, height: 70 }} underlayColor="#eee" onPress={() => this._startWatch()}>
+						<Text style={{...className("g-fs-14 g-bg-trans"), color: this.state.startBtnColor }}>{this.state.startBtnText}</Text>
 					</TouchableHighlight>
 				</View>
 			</View>
@@ -104,23 +103,24 @@ class WatchRecord extends Component {
 			theDataSource = ds.cloneWithRows(this.props.record);
 		return (
 			<ListView
-				style={{ ...className("g-w-full g-pd-h-15"), height: 400 }}
+				style={{...className("g-w-full g-pd-h-15"), height: 400 }}
 				dataSource={theDataSource}
 				renderRow={(rowData) =>
-					<View style={{ ...className("g-fd-r g-ai-c g-bb-light"), height: 50 }}>
-						<Text style={{ ...className("g-col g-bg-trans g-pd-h-20"), color: "#777", textAlign: "left" }}>{rowData.title}</Text>
+					<View style={{...className("g-fd-r g-ai-c g-bb-light"), height: 50 }}>
+						<Text style={{...className("g-col g-bg-trans g-pd-h-20 g-ta-l"), color: "#777"}}>{rowData.title}</Text>
 						<View style={className("g-ai-c")}>
-							<Text style={{ ...className("g-col g-bg-trans g-pd-h-20"), color: "#222", textAlign: "right" }}>{rowData.time}</Text>
+							<Text style={{...className("g-col g-bg-trans g-pd-h-20 g-ta-r"), color: "#222"}}>{rowData.time}</Text>
 						</View>
 					</View>
-				} />
+				} 
+			/>
 		);
 	}
 }
 
 export default class extends Component {
-	constructor() {
-		super();
+	constructor(props, context) {
+		super(props, context);
 		this.state = {
 			stopWatch: false,
 			resetWatch: true,
