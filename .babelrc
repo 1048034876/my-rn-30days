@@ -4,6 +4,21 @@
 	],
 	"plugins": [
 		[
+			"module-resolver",
+			{
+				"root": ["./src"],
+				"alias": {
+					"@css": "./src/css",
+					"@images": "./src/img",
+					"@actions": "./src/pages/actions",
+					"@components": "./src/pages/components",
+					"@constants": "./src/pages/constants",
+					"@containers": "./src/pages/containers",
+					"@reducers": "./src/pages/reducers"
+				}
+			}
+		],
+		[
 			"import",
 			{
 				"libraryName": "antd-mobile"

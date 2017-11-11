@@ -89,6 +89,12 @@ const globalStyle = {
 		alignItems: 'center',
 		boxSizing: "border-box",
 	},
+	'g-t-0': {
+		top: 0
+	},
+	'g-l-0': {
+		left: 0
+	},
 	'g-pd-t-5': {
 		paddingTop: 5
 	},
