@@ -32,12 +32,21 @@ class Entrance extends Component {
         super(props, context);
         this.state = {
             transformAnim: new Animated.Value(1),
-            opacityAnim: new Animated.Value(2),
+            opacityAnim: new Animated.Value(1),
         };
     }
     componentDidMount() {
         Animated.timing(
             this.state.transformAnim,
+            {
+                toValue: 50,
+                duration: 1200,
+                easing: Easing.elastic(2),
+                delay: 2000,
+            },
+        ).start();
+        Animated.timing(
+            this.state.opacityAnim,
             {
                 toValue: 0,
                 duration: 800,
@@ -51,8 +60,8 @@ class Entrance extends Component {
     }
     render() {
         return (
-            <Animated.View style={className("g-ps-a g-w-full g-h-full g-ai-c g-jc-c g-bg-middle-blue")}>
-                <AnimatedIcon name="logo-twitter" size={60} style={{ ...className("g-f-c-white g-ta-c g-ps-r"), top: -20 }} />
+            <Animated.View style={{...className("g-ps-a g-w-full g-h-full g-ai-c g-jc-c g-bg-middle-blue"), left: 0, top: 0, opacity: this.state.opacityAnim}}>
+                <AnimatedIcon name="logo-twitter" size={60} style={{ ...className("g-f-c-white g-ta-c g-ps-r"), top: -20, transform: [{scale: this.state.transformAnim}] }} />
             </Animated.View>
         )
     }
@@ -82,7 +91,7 @@ class TwitterPost extends Component {
                     <RefreshControl
                         refreshing={this.state.isRefreshing}
                         onRefresh={() => this._onRefresh()}
-                        tintColor="#ddd"
+                        progressBackgroundColor="#ddd"
                     />
                 }
             >
@@ -96,19 +105,18 @@ class TwitterFlow extends Component {
     render() {
         return (
             <View>
-                <View style={{ ...className("g-fd-r g-pd-t-30 g-bb-light g-pd-b-5 g-bg-white"), borderBottomWidth: 1 }}>
-                    <View style={className("g-col g-ai-c g-jc-c")}>
-                        <Icon name="ios-person-add" size={23} style={className("g-f-c-middleBlue g-pd-l-10")} />
+                <View style={{ ...className("g-fd-r g-bb-light g-pd-b-5 g-bg-white"), borderBottomWidth: 1 }}>
+                    <View style={className("g-col")}>
+                        <Icon name="ios-person-add" size={25} style={className("g-f-c-middleBlue g-pd-l-10")} />
                     </View>
-                    <View style={className("g-col g-ai-c g-jc-c")}>
-                        <Icon name="logo-twitter" size={27} style={className("g-f-c-middleBlue")} />
+                    <View style={{...className("g-col g-jc-c"), marginLeft: 100}}>
+                        <Icon name="logo-twitter" size={29} style={className("g-f-c-middleBlue")} />
                     </View>
-                    <View style={className("g-col g-ai-c g-jc-fe g-fd-r")}>
-                        <Icon name="ios-search" size={23} style={{ ...className("g-f-c-middleBlue"), width: 30 }} />
-                        <Icon name="ios-create-outline" size={23} style={{ ...className("g-f-c-middleBlue g-pd-r-10"), width: 30 }} />
+                    <View style={className("g-col g-jc-fe g-fd-r")}>
+                        <Icon name="ios-search" size={25} style={{ ...className("g-f-c-middleBlue"), width: 30 }} />
+                        <Icon name="ios-create-outline" size={25} style={{ ...className("g-f-c-middleBlue g-pd-r-10"), width: 30 }} />
                     </View>
                 </View>
-                <TwitterPost />
             </View>
         )
     }
@@ -142,19 +150,22 @@ class FacebookTabBar extends Component {
         return `rgb(${red}, ${green}, ${blue})`;
     }
     render() {
+        let tabTitle = ["主页", "通知", "私信", "我"];
         return (
-            <View style={{ ...className("g-col g-pd-b-10"), position: "absolute", bottom: 0, height: 55 }}>
+            <View style={{ ...className("g-fd-r g-pd-t-5"), height: 65, borderBottomWidth: 1, backgroundColor: "#eee" }}>
                 {
                     this.props.tabs.map((tab, i) => {
-                        console.log(tab)
                         return (
                             <TouchableOpacity key={i} onPress={() => setTimeout(() => this.props.goToPage(i), 0)} style={className("g-col g-ai-c g-jc-c g-pd-b-10")}>
-                                <Icon
-                                    name={tab}
-                                    size={30}
-                                    color={this.props.activeTab === i ? 'rgb(49, 149, 215)' : 'rgb(159, 159, 159)'}
-                                    ref={(icon) => { this.tabIcons[i] = icon; }}
-                                />
+                                <View style={className("g-ai-c g-jc-c")}>
+                                    <Icon
+                                        name={tab}
+                                        size={30}
+                                        color={this.props.activeTab === i ? 'rgb(49, 149, 215)' : 'rgb(159, 159, 159)'}
+                                        ref={(icon) => { this.tabIcons[i] = icon; }}
+                                    />
+                                    <Text style={{color :this.props.activeTab === i ? 'rgb(49, 149, 215)' : 'rgb(159, 159, 159)'}}>{tabTitle[i]}</Text>
+                                </View>
                             </TouchableOpacity>
                         )
                     })
@@ -168,14 +179,8 @@ class TwitterTab extends Component {
     constructor(props, context) {
         super();
         this.state = {
-            selectedTab: "主页",
             title: "主页",
         };
-    }
-    changeTab(tabName) {
-        this.setState({
-            selectedTab: tabName
-        });
     }
     _updateTitle(obj) {
         const { i } = obj;
@@ -199,30 +204,30 @@ class TwitterTab extends Component {
         });
     }
     render() {
-        const tabView = (
-            <View style={{ flex: 1 }}>
-                <View style={{ ...className("g-fd-r g-pd-t-15 g-pd-l-20 g-pd-r-10 g-w-full g-jc-sb"), backgroundColor: "#3195d7", height: 55 }}>
-                    <View style={className("g-fd-r")}>
-                        <Icon name="logo-twitter" color="#fff" size={27} />
-                        <Text style={className("g-f-c-white g-pd-l-10 g-fs-20")}>{this.state.title}</Text>
-                    </View>
-                    <View style={{ ...className("g-fd-r g-jc-sb"), width: 60 }}>
-                        <Icon name="ios-search" color="#fff" size={25} />
-                        <Icon name="ios-create-outline" color="#fff" size={25} />
-                    </View>
-                </View>
+        return (
+            // <View style={className("g-col")}>
+                // <View style={{...className("g-w-full g-fd-r g-jc-sb g-pd-t-15 g-pd-r-10 g-pd-l-20"), backgroundColor: "#3195d7", height: 55}}>
+                    // <View style={className("g-fd-r")}>
+                        // <Icon name="logo-twitter" color="#fff" size={27} />
+                        // <Text style={className("g-f-c-white g-fs-20 g-pd-l-10")}>{this.state.title}</Text>
+                    // </View>
+                    // <View style={className("g-fd-r")}>
+                        // <Icon name="ios-search" color="#fff" size={25} />
+                        // <Icon name="ios-create-outline" color="#fff" size={25} />
+                    // </View>
+                // </View>
                 <ScrollableTabView
                     onChangeTab={(obj) => this._updateTitle(obj)}
                     renderTabBar={() => <FacebookTabBar />}
+                    tabBarPosition="overlayBottom"
                 >
                     <TwitterPost tabLabel="ios-home" />
                     <TwitterPost tabLabel="ios-notifications" />
                     <TwitterPost tabLabel="ios-mail" />
                     <TwitterPost tabLabel="ios-person" />
                 </ScrollableTabView>
-            </View>
+            // </View>
         );
-        return tabView;
     }
 }
 
@@ -243,9 +248,10 @@ export default class extends Component {
             ? <Entrance hideThis={() => this._hideEntrance()} />
             : <View />;
         return (
-            <View style={className("g-w-full g-h-full")}>
+            <View style={{...className("g-w-full"), height: "100%"}}>
+                <TwitterFlow />
                 <TwitterTab />
-                {entrance}
+               
             </View>
         )
     }

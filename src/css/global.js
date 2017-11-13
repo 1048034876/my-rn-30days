@@ -305,6 +305,9 @@ const globalStyle = {
 	'g-bg-white': {
 		backgroundColor: "#fff"
 	},
+	'g-bg-gray': {
+		backgroundColor: "#ddd"
+	},
 	'g-bg-light': {
 		backgroundColor: "#f3f3f3"
 	},
@@ -346,6 +349,9 @@ const globalStyle = {
 	},
 	'g-f-c-dark': {
 		color: "#555"
+	},
+	'g-f-c-gray': {
+		color: "#ddd"
 	},
 	'g-f-c-middleBlue': {
 		color: "#1b95e0"

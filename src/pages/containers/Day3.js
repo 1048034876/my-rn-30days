@@ -9,11 +9,14 @@ import {
     View,
     Text,
     Easing,
+    Image,
     Animated,
+    ScrollView,
+    RefreshControl,
     TouchableHighlight,
     TouchableOpacity
 } from 'react-native';
-import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
+import ScrollableTabView, { DefaultTabBar, ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { className, dimensionHeight, dimensionWidth } from '@css/common';
 
@@ -46,6 +49,67 @@ class Entrance extends Component {
     }
 }
 
+class TwitterPage extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            isRefreshing: false
+        }
+    }
+    onRefresh() {
+        this.setState({
+            isRefreshing: true
+        });
+        setTimeout(() => {
+            this.setState({
+                isRefreshing: false
+            });
+        }, 1000);
+    }
+    render() {
+        return (
+            <ScrollView
+                refreshControl={
+                    <RefreshControl
+                        refreshing={this.state.isRefreshing}
+                        onRefresh={() => this.onRefresh()}
+                        progressBackgroundColor="#ddd"
+                    />
+                }
+            >
+                <Image source={require("../../img/day3.png")} style={{...className("g-w-full"), height: dimensionHeight - 140 }} />
+                <Image source={require("../../img/day3.png")} style={{...className("g-w-full"), height: dimensionHeight - 140 }} />
+            </ScrollView>
+        )
+    }
+}
+
+class CustomTabBar extends Component {
+    constructor(props, context) {
+        super(props, context);
+    }
+    render() {
+        const { title } = this.props
+        return (
+            <View style={{...className("g-fd-r g-w-full g-bg-white"), height: 50}}>
+                {
+                    this.props.tabs.map((tab, i) => {
+                        return (
+                            <TouchableHighlight key={i} onPress={() => {}} style={className("g-col g-ai-c g-jc-c")}>
+                                <Icon
+                                    name={tab}
+                                    size={30}
+                                />
+                            </TouchableHighlight>
+                        )
+
+                    })
+                }
+            </View>
+        )
+    }
+}
+
 class TwitterTab extends Component {
      constructor(props, context) {
          super(props, context);
@@ -54,10 +118,15 @@ class TwitterTab extends Component {
          return (
             <ScrollableTabView
                 tabBarPosition="overlayBottom"
+                renderTabBar={() => <CustomTabBar />}
+                // tabBarBackgroundColor="#fff"
+                // tabBarTextStyle={className("g-f-c-dark g-fs-20 g-m-t-10")}
+                // tabBarUnderlineStyle={{...className("g-bg-gray g-ai-c g-as-c"), width: "20%",height: 5, marginLeft: "2.5%"}} 为默认tab设置样式
             >
-                <Text tabLabel="ios-home">1234</Text>
-                <Text tabLabel="ios-notifications">123</Text>
-                <Text tabLabel="ios-mail">123</Text>
+                <TwitterPage tabLabel="ios-home" />
+                <TwitterPage tabLabel="ios-notifications" />
+                <TwitterPage tabLabel="ios-mail" />
+                <TwitterPage tabLabel="ios-person" />
             </ScrollableTabView>
          )
      }
@@ -80,9 +149,8 @@ export default class extends Component {
             <View style={{...className("g-w-full"), height: "100%"}}>
                 <TwitterTab />
                 {
-                    this.state.show ? <Entrance hide={() => this.hideEntrance()} /> : <View />
+                    //this.state.show ? <Entrance hide={() => this.hideEntrance()} /> : <View />
                 }
-            
             </View>
         )
     }
