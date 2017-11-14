@@ -14,7 +14,7 @@ import {
     ScrollView,
     RefreshControl,
     TouchableHighlight,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
 import ScrollableTabView, { DefaultTabBar, ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -88,21 +88,23 @@ class CustomTabBar extends Component {
     constructor(props, context) {
         super(props, context);
     }
+    changeTab(i) {
+        this.props.goToPage(i);
+    }
     render() {
-        const { title } = this.props
         return (
             <View style={{...className("g-fd-r g-w-full g-bg-white"), height: 50}}>
                 {
                     this.props.tabs.map((tab, i) => {
                         return (
-                            <TouchableHighlight key={i} onPress={() => {}} style={className("g-col g-ai-c g-jc-c")}>
+                            <TouchableOpacity key={i} onPress={() => {this.changeTab(i)}} style={className("g-col g-ai-c g-jc-c g-bt-light")}>
                                 <Icon
                                     name={tab}
                                     size={30}
+                                    color={this.props.activeTab == i ? "#1b95e0" : "#ddd"}
                                 />
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         )
-
                     })
                 }
             </View>

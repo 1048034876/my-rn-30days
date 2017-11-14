@@ -363,6 +363,10 @@ const globalStyle = {
 		borderBottomWidth: 1,
 		borderBottomColor: "#ddd",
 	},
+	'g-bt-light': {
+		borderTopWidth: 1,
+		borderTopColor: "#ddd",
+	},
 	'g-ta-l': {
 		textAlign: "left"
 	},

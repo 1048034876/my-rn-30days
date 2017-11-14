@@ -133,22 +133,22 @@ class FacebookTabBar extends Component {
         setTimeout(() => this.props.goToPage(0), 0);
         this._listener = this.props.scrollValue.addListener(this.setAnimationValue);
     }
-    setAnimationValue({ value, }) {
-        this.tabIcons.forEach((icon, i) => {
-            const progress = (value - i >= 0 && value - i <= 1) ? value - i : 1;
-            icon.setNativeProps({
-                style: {
-                    color: this.iconColor(progress),
-                },
-            });
-        });
-    }
-    iconColor(progress) {
-        const red = 49 + (159 - 49) * progress;
-        const green = 149 + (159 - 149) * progress;
-        const blue = 215 + (159 - 215) * progress;
-        return `rgb(${red}, ${green}, ${blue})`;
-    }
+    // setAnimationValue({ value, }) {
+    //     this.tabIcons.forEach((icon, i) => {
+    //         const progress = (value - i >= 0 && value - i <= 1) ? value - i : 1;
+    //         icon.setNativeProps({
+    //             style: {
+    //                 color: this.iconColor(progress),
+    //             },
+    //         });
+    //     });
+    // }
+    // iconColor(progress) {
+    //     const red = 49 + (159 - 49) * progress;
+    //     const green = 149 + (159 - 149) * progress;
+    //     const blue = 215 + (159 - 215) * progress;
+    //     return `rgb(${red}, ${green}, ${blue})`;
+    // }        这段代码没有发现有什么具体的功能
     render() {
         let tabTitle = ["主页", "通知", "私信", "我"];
         return (
